@@ -9,7 +9,7 @@
 import { useLocalStorage, useMouse, usePreferredDark } from '@vueuse/core'
 
 const { x, y } = useMouse()
-const c1 = $ref()
+const c1 = ref()
 
 const isDark = usePreferredDark()
 
