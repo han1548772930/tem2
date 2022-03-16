@@ -3,7 +3,8 @@ import WindiCSS from 'vite-plugin-windicss'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
-
+import Unocss from 'unocss/vite'
+import { presetAttributify, presetUno } from 'unocss'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -11,6 +12,13 @@ export default defineConfig({
       reactivityTransform: true,
     }),
     WindiCSS(),
+    Unocss({
+      presets: [
+        presetAttributify({ /* preset options */}),
+        presetUno(),
+        // ...custom presets
+      ],
+    }),
     AutoImport({
       // targets to transform
       include: [
