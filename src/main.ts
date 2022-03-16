@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import 'virtual:windi.css'
+import 'uno.css'
 import App from './App.vue'
 import router from './router'
-import 'uno.css'
 const app = createApp(App)
 
 app.use(createPinia())
