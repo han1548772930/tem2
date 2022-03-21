@@ -1,4 +1,6 @@
 <template>
+  <C1 />
+  <el-button />
   <div
     v-motion
     :initial="{

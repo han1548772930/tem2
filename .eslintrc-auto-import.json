@@ -53,6 +53,8 @@
     "useRouter": true,
     "useSlots": true,
     "watch": true,
-    "watchEffect": true
+    "watchEffect": true,
+    "useDraggable": true,
+    "isClient ": true
   }
 }

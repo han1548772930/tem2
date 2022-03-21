@@ -5,6 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 import { presetAttributify, presetUno } from 'unocss'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
 import Pages from 'vite-plugin-pages'
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,9 +21,9 @@ export default defineConfig({
       // 异步方式加载路由组件
       importMode: 'async',
       // 遍历路由信息，给默认路由加一个redirect
-      extendRoute(route) {
-        if (route.path === '/') return { ...route, redirect: 'PageTwo' }
-      },
+      // extendRoute(route) {
+      //   if (route.path === '/') return { ...route, redirect: 'PageTwo' }
+      // },
 
     }),
     WindiCSS(),
@@ -50,17 +52,15 @@ export default defineConfig({
           '@vueuse/core': [
             // named imports
             'useMouse', // import { useMouse } from '@vueuse/core',
+            'useDraggable',
+            'isClient', // import { useMouse } from '@vueuse/core',
             // alias
             ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
           ],
+
           'axios': [
             // default imports
             ['default', 'axios'], // import { default as axios } from 'axios',
-          ],
-          '[package-name]': [
-            '[import-names]',
-            // alias
-            ['[from]', '[alias]'],
           ],
         },
       ],
@@ -78,6 +78,12 @@ export default defineConfig({
       // see https://github.com/antfu/unplugin-auto-import/pull/23/
       resolvers: [
         /* ... */
+      ],
+    }),
+    Components({
+      resolvers: [
+        ElementPlusResolver(),
+        VueUseComponentsResolver(),
       ],
     }),
   ],
